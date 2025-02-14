@@ -10,14 +10,14 @@ def mac_to_ip(mac_address):
     return ".".join(ip_address.split(".")[0:4])
 
 
-cap = pyshark.FileCapture("D4-250203.pcapng")
+cap = pyshark.FileCapture("files/D4-250203.pcapng")
 pcap_rows = {}
 
 for i, packet in enumerate(cap):
     row = {}
     row["packet"] = packet
 
-    if True:
+    if i == 0:
         # print(packet)
         # Layer ETH
         if "eth" in packet:
@@ -204,8 +204,10 @@ for k, row in pcap_rows.items():
     if not __dst_mac in __stream["MACs"]:
         __stream["MACs"].append(__dst_mac)
    
-x = packet_streams["100"]
-print(x)
+# x = packet_streams["100"]
+# print(x)
+
+print(packet_streams)
 
 
 
